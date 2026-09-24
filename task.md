@@ -1,0 +1,14 @@
+- [x] Add bulk delete endpoint for notifications in `server.cjs`
+- [x] Refactor GET /api/chats endpoint in `server.cjs` to count partner unread messages
+- [x] Refactor GET /api/notifications endpoint in `server.cjs` to filter out messages and comments notifications
+- [x] Disable direct message notification creation in `/api/chats/message` in `server.cjs`
+- [x] Implement local database mapping of unread message counts in `App.jsx` mockup
+- [x] Refactor fetchChatThread mockup and live handlers to update unread status and refresh inbox
+- [x] Update background polling interval to load inbox updates unconditionally
+- [x] Render unread count badge over Messages icon in sidebar navigation
+- [x] Render unread conversation highlighting and unread counts in Inbox list
+- [x] Add Delete All button in Notifications header and disable individual delete for AI abuse warnings
+- [x] Compile and verify Vite build
+- [x] Run backend and FastAPI servers
+- [x] Mask unread message previews with placeholders until opened
+- [x] Protect routes to redirect unauthenticated users to login page immediately upon opening the app

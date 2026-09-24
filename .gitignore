@@ -1,0 +1,83 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies and Builds
+node_modules
+dist
+dist-ssr
+build
+*.local
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Database & SQLite files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+prisma/dev.db
+prisma/dev.db-journal
+
+# Python Virtual Environments & Cache
+.venv/
+venv/
+env/
+ENV/
+ai-training/.venv/
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Large AI Model Weights & Checkpoints (>100MB GitHub limit)
+# Note: Final model configs, tokenizers, vocabularies, and training scripts are tracked
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.onnx
+*.h5
+**/checkpoint-*/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary test logs and dump files
+*_matches.txt
+*_grep.txt
+results*.txt
+server*.log
+db_*.txt
+tables_out.txt
+test_synced_complaints_out.txt
+test_prisma_out.txt
+vite_error.txt
+generate_out.txt
+process_cmd.txt
+reports_dump.txt
+effect_*.txt
+find_some_matches.txt
+key_matches.txt
+matches.txt
+selected_matches.txt
+session_matches.txt
+socket_matches.txt
+state_setters.txt
+userid_matches.txt
+zero_matches.txt

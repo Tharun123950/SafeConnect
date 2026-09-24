@@ -1,0 +1,53 @@
+[
+  {
+    "id": 4,
+    "completeMessage": "bhale",
+    "abusiveWordOrPhrase": "bhale",
+    "normalizedWordOrPhrase": "bhale",
+    "originalSenderId": 4,
+    "originalReceiverId": 9,
+    "originalSenderUsername": "srinitha_bathula",
+    "originalReceiverUsername": "gayathri_daggubati",
+    "submittedById": 9,
+    "submittedByUsername": "gayathri_daggubati",
+    "originalMessageId": 48,
+    "source": "user_feedback",
+    "status": "APPROVED",
+    "language": "auto",
+    "createdAt": "2026-09-19T07:05:31.873Z"
+  },
+  {
+    "id": 7,
+    "completeMessage": "bikki",
+    "abusiveWordOrPhrase": "bikki",
+    "normalizedWordOrPhrase": "bikki",
+    "originalSenderId": 2,
+    "originalReceiverId": 3,
+    "originalSenderUsername": "tharun_battu",
+    "originalReceiverUsername": "srinivas_bikki",
+    "submittedById": 3,
+    "submittedByUsername": "srinivas_bikki",
+    "originalMessageId": 85,
+    "source": "user_feedback",
+    "status": "APPROVED",
+    "language": "auto",
+    "createdAt": "2026-09-22T13:15:46.544Z"
+  },
+  {
+    "id": 8,
+    "completeMessage": "lavda",
+    "abusiveWordOrPhrase": "lavda",
+    "normalizedWordOrPhrase": "lavda",
+    "originalSenderId": 2,
+    "originalReceiverId": 3,
+    "originalSenderUsername": "tharun_battu",
+    "originalReceiverUsername": "srinivas_bikki",
+    "submittedById": 3,
+    "submittedByUsername": "srinivas_bikki",
+    "originalMessageId": 88,
+    "source": "user_feedback",
+    "status": "APPROVED",
+    "language": "auto",
+    "createdAt": "2026-09-22T13:34:13.154Z"
+  }
+]

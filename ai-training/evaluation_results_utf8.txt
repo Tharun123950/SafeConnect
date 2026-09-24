@@ -1,0 +1,144 @@
+Device selected for evaluation: cpu
+Loaded 488 records from test set.
+
+Loading models and tokenizers...
+English test size: 30
+Telugu Romanized test size: 38
+Overall test size: 488
+
+Evaluating Old Model...
+
+Evaluating New Model V2...
+
+==========================================
+       SUBSET: English
+==========================================
+Metric        | Old Model   | New Model
+--------------|-------------|-------------
+Accuracy      | 0.3333      | 0.8000
+Precision     | 0.0000      | 0.9375
+Recall        | 0.0000      | 0.7500
+F1-score      | 0.0000      | 0.8333
+
+Old Confusion Matrix:
+  True Negatives (Safe Correct):       10
+  False Positives (Safe -> Toxic):     0
+  False Negatives (Toxic -> Safe):     20
+  True Positives (Toxic Correct):      0
+
+New Confusion Matrix:
+  True Negatives (Safe Correct):       9
+  False Positives (Safe -> Toxic):     1
+  False Negatives (Toxic -> Safe):     5
+  True Positives (Toxic Correct):      15
+
+==========================================
+       SUBSET: Telugu/Romanized Telugu
+==========================================
+Metric        | Old Model   | New Model
+--------------|-------------|-------------
+Accuracy      | 0.0789      | 0.8158
+Precision     | 0.0000      | 0.9118
+Recall        | 0.0000      | 0.8857
+F1-score      | 0.0000      | 0.8986
+
+Old Confusion Matrix:
+  True Negatives (Safe Correct):       3
+  False Positives (Safe -> Toxic):     0
+  False Negatives (Toxic -> Safe):     35
+  True Positives (Toxic Correct):      0
+
+New Confusion Matrix:
+  True Negatives (Safe Correct):       0
+  False Positives (Safe -> Toxic):     3
+  False Negatives (Toxic -> Safe):     4
+  True Positives (Toxic Correct):      31
+
+==========================================
+       SUBSET: Overall Multilingual
+==========================================
+Metric        | Old Model   | New Model
+--------------|-------------|-------------
+Accuracy      | 0.4939      | 0.7541
+Precision     | 0.6316      | 0.7683
+Recall        | 0.0476      | 0.7500
+F1-score      | 0.0886      | 0.7590
+
+Old Confusion Matrix:
+  True Negatives (Safe Correct):       229
+  False Positives (Safe -> Toxic):     7
+  False Negatives (Toxic -> Safe):     240
+  True Positives (Toxic Correct):      12
+
+New Confusion Matrix:
+  True Negatives (Safe Correct):       179
+  False Positives (Safe -> Toxic):     57
+  False Negatives (Toxic -> Safe):     63
+  True Positives (Toxic Correct):      189
+
+=======================================================
+Metric                         | Old Model  | New Model 
+=======================================================
+English Accuracy               | 0.3333     | 0.8000    
+English Precision              | 0.0000     | 0.9375    
+English Recall                 | 0.0000     | 0.7500    
+English F1                     | 0.0000     | 0.8333    
+---------------------------------+------------+------------
+Telugu/Rom Telugu Accuracy     | 0.0789     | 0.8158    
+Telugu/Rom Telugu Precision    | 0.0000     | 0.9118    
+Telugu/Rom Telugu Recall       | 0.0000     | 0.8857    
+Telugu/Rom Telugu F1           | 0.0000     | 0.8986    
+---------------------------------+------------+------------
+Overall Accuracy               | 0.4939     | 0.7541    
+Overall Precision              | 0.6316     | 0.7683    
+Overall Recall                 | 0.0476     | 0.7500    
+Overall F1                     | 0.0886     | 0.7590    
+=======================================================
+
+==========================================
+  STANDALONE TEST CASES FOR: OLD MODEL
+==========================================
+Input Message                  | Expected   | Predicted  | Status    
+----------------------------------------------------------------------
+idiot                          | TOXIC      | SAFE       | FAILED    
+IDIOT!!!                       | TOXIC      | SAFE       | FAILED    
+i.d.i.o.t                      | TOXIC      | SAFE       | FAILED    
+you are a stupid person        | TOXIC      | SAFE       | FAILED    
+hello how are you              | SAFE       | SAFE       | PASSED    
+this is a beautiful day        | SAFE       | SAFE       | PASSED    
+dengutha                       | TOXIC      | SAFE       | FAILED    
+DENGUTHA!!!                    | TOXIC      | SAFE       | FAILED    
+d e n g u t h a                | TOXIC      | SAFE       | FAILED    
+d.e.n.g.u.t.h.a                | TOXIC      | SAFE       | FAILED    
+puku                           | TOXIC      | SAFE       | FAILED    
+p u k u                        | TOXIC      | SAFE       | FAILED    
+kutha                          | TOXIC      | SAFE       | FAILED    
+niemma                         | TOXIC      | SAFE       | FAILED    
+namaskaram andi                | SAFE       | SAFE       | PASSED    
+bagunnara                      | SAFE       | SAFE       | PASSED    
+tintunnara                     | SAFE       | SAFE       | PASSED    
+enti sangathulu                | SAFE       | SAFE       | PASSED    
+
+==========================================
+  STANDALONE TEST CASES FOR: NEW MODEL V2
+==========================================
+Input Message                  | Expected   | Predicted  | Status    
+----------------------------------------------------------------------
+idiot                          | TOXIC      | TOXIC      | PASSED    
+IDIOT!!!                       | TOXIC      | TOXIC      | PASSED    
+i.d.i.o.t                      | TOXIC      | TOXIC      | PASSED    
+you are a stupid person        | TOXIC      | TOXIC      | PASSED    
+hello how are you              | SAFE       | SAFE       | PASSED    
+this is a beautiful day        | SAFE       | SAFE       | PASSED    
+dengutha                       | TOXIC      | TOXIC      | PASSED    
+DENGUTHA!!!                    | TOXIC      | TOXIC      | PASSED    
+d e n g u t h a                | TOXIC      | SAFE       | FAILED    
+d.e.n.g.u.t.h.a                | TOXIC      | TOXIC      | PASSED    
+puku                           | TOXIC      | TOXIC      | PASSED    
+p u k u                        | TOXIC      | TOXIC      | PASSED    
+kutha                          | TOXIC      | TOXIC      | PASSED    
+niemma                         | TOXIC      | SAFE       | FAILED    
+namaskaram andi                | SAFE       | SAFE       | PASSED    
+bagunnara                      | SAFE       | SAFE       | PASSED    
+tintunnara                     | SAFE       | SAFE       | PASSED    
+enti sangathulu                | SAFE       | TOXIC      | FAILED    

@@ -1,0 +1,147 @@
+=== Hugging Face Dataset Inspection ===
+Available Configurations/Languages: ['default']
+Loading dataset 'textdetox/multilingual_toxicity_dataset'...
+Loading config: default
+Loaded all configs successfully.
+
+=== Dataset Structure & Stats ===
+
+--- Config/Language: default ---
+splits: ['en', 'ru', 'uk', 'de', 'es', 'am', 'zh', 'ar', 'hi', 'it', 'fr', 'he', 'hin', 'tt', 'ja']
+  Split: en
+    Number of records: 5000
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': 'The trans women reading this tweet right now is beautiful', 'toxic': 0}
+      Row 1: {'text': '9) uhhhh i like being lgbt a lot. i feel proud of what i have done to help others in my community', 'toxic': 0}
+    Label Distribution for column 'toxic':
+      0: 2500
+      1: 2500
+  Split: ru
+    Number of records: 5000
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': 'я сегодня проезжала по рабочей и между домами снитенко и гомолысовой магазином ( на пустыре) бежала кошка похожего окраса.', 'toxic': 0}
+      Row 1: {'text': 'может, я и ошиблась, но необычный окрас бросился в глаза.', 'toxic': 0}
+    Label Distribution for column 'toxic':
+      0: 2500
+      1: 2500
+  Split: uk
+    Number of records: 5000
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': 'У дворі роблять дорогу, починають шуміти о 8-й ранку, але приємно, що нарешті її роблять!!!', 'toxic': 0}
+      Row 1: {'text': 'І знову дві години на прокидання.', 'toxic': 0}
+    Label Distribution for column 'toxic':
+      0: 2500
+      1: 2500
+  Split: de
+    Number of records: 5000
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': ' Untaten mit "Flüchtlingen" oder Moslems in Verbindung zu bringen wird immer als rassistische Hetze gemeldet.  Fakten benennen = Rechtsextremismus. Da helfen nur blumige Umschreibungen. In der DDR hatte man auch Geheimsprachen entwickelt..', 'toxic': 0}
+      Row 1: {'text': 'Der Regenwald wird im Akkord abgeholzt ,das interessiert niemanden !', 'toxic': 0}
+    Label Distribution for column 'toxic':
+      0: 2500
+      1: 2500
+  Split: es
+    Number of records: 5000
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': 'A este tambien lo habia que echar porque era una puta mierda, como Cumic', 'toxic': 1}
+      Row 1: {'text': 'la mañana coincidió que charlando de mis labios, en sus brazos y le metió un dedo en el baño aqui la conti porque estuve un rato hasta que senti espero que les había prometido que viajaría a Veracruz, inmediatamente vino a la vida de El mago de petarda de se lo da, una voyeur se masturba muy placenteramente en casa', 'toxic': 1}
+    Label Distribution for column 'toxic':
+      1: 2500
+      0: 2500
+  Split: am
+    Number of records: 5000
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': 'ሆብዬ እመጣለሁ ሆ ብዬ በድል ጥንትም ያባቴ ነው ጠላትን መግደል??', 'toxic': 0}
+      Row 1: {'text': ' ታጋይ ስዩም መስፍን የጦር አውድማ ትሆናለች ሌሎችም ይገቡበታል:: ማንም ቆሞ የሚያይ የለም - ትግራይ ብቻ የጦርነት ቀጠና', 'toxic': 1}
+    Label Distribution for column 'toxic':
+      0: 2500
+      1: 2500
+  Split: zh
+    Number of records: 5000
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': '抓虫大战，人人有责', 'toxic': 1}
+      Row 1: {'text': '估计已经成了非洲某部落的第36号王妃', 'toxic': 1}
+    Label Distribution for column 'toxic':
+      1: 2500
+      0: 2500
+  Split: ar
+    Number of records: 5000
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': 'هذوك الحمير يسبو ربي يقطع لسانهم', 'toxic': 1}
+      Row 1: {'text': 'خبر موت شخص من حركة امل و اشخاص مردة و أشخاص ما الن علاقة بس بيكرهو جبران باسيل بعد كلام السيد نصرالله يكسر الص…', 'toxic': 0}
+    Label Distribution for column 'toxic':
+      1: 2500
+      0: 2500
+  Split: hi
+    Number of records: 5000
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': 'मेरे देश के हिन्दु बहुत निराले है। कुछ तो पक्के राम भक्त है और कुछ बाबर के साले है 🙏 जय श्री राम 🙏', 'toxic': 1}
+      Row 1: {'text': 'साले जेएनयू छाप कमिने लोग हिन्दुओं को यह कहते है की संविधान सबको बराबर अधिकार देता है। सच्चाई यह है कि यह बराबर अधिकार नहीं देता है।', 'toxic': 1}
+    Label Distribution for column 'toxic':
+      1: 2500
+      0: 2500
+  Split: it
+    Number of records: 5000
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': 'Poeta italiano?????????????? Ridicolo, non ha scritto in italiano ed è nato e morto prima che l italia esistesse, allora anche Virgilio era un poeta italiano!!!!!!!!!!!!!!!!!!!! Ridicolo!!!!!!!', 'toxic': 1}
+      Row 1: {'text': 'Vuole venire a vedere casa mia in montagna, vuole vedere come è fatta?Può essere affittabile una casa, che non ha acqua ne gas e nè luce,che cazzo di info personale è.Stronzo! Utente fra105', 'toxic': 1}
+    Label Distribution for column 'toxic':
+      1: 2500
+      0: 2500
+  Split: fr
+    Number of records: 5000
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': "Oui, et c'est la voie à suivre même selon Martin Luther King à l'époque.", 'toxic': 0}
+      Row 1: {'text': "D'ailleurs il y était cité un journaliste ayant filmé et rapporté pas mal de films de ces atrocités (saccages/massacres quand refus de payer l'impôt par exemple), dont les films ont été en grande partie détruits, il faudrait que je retrouve son nom pour poster ça ici.", 'toxic': 0}
+    Label Distribution for column 'toxic':
+      0: 2500
+      1: 2500
+  Split: he
+    Number of records: 2011
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': 'כולם לשתף תיראו איך העסק עובד הכל מסריח ורקוב להקיא עליכם שמולנים פח', 'toxic': 1}
+      Row 1: {'text': 'קוף מכוער הוא עובד בשביל הפרקליטות הזבל הזה חייב לעשות או להקים ועדת בדיקה דחוף לכל מה שקורה בפרקליטות שערוריה', 'toxic': 1}
+    Label Distribution for column 'toxic':
+      0: 1204
+      1: 807
+  Split: hin
+    Number of records: 4363
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': 'Beta to tu apne baap ka hai ...permission to tu maang he liya ab mukr mat smjaaaa ....yehi adat tumlogo ki dagabaazi wali jayegi nahi ....', 'toxic': 0}
+      Row 1: {'text': 'Garibo Kay pas 1000 Kay note bhe nahi hotay voh 100 ya 50 par hi bharosa kartay hai nakli pak notes se bachnay Kay lia !', 'toxic': 0}
+    Label Distribution for column 'toxic':
+      1: 2200
+      0: 2163
+  Split: tt
+    Number of records: 5000
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': '4 сәгать эшләдек, аннары төшке аш, тыныч сәгать, ә кичен спорт, фильмнар, биюләр.', 'toxic': 0}
+      Row 1: {'text': 'миңа икенчесен дә ясарга ялкау)))) һәм барыбер кешеләр аралашу стиле, язу манерасы буенча таныла.', 'toxic': 0}
+    Label Distribution for column 'toxic':
+      0: 2500
+      1: 2500
+  Split: ja
+    Number of records: 5000
+    Column names: ['text', 'toxic']
+    First 2 rows:
+      Row 0: {'text': '信者は米国ではなく売国政党が非難されてる事を理解出来ない', 'toxic': 1}
+      Row 1: {'text': '逃げ回る安倍チンゾー   支持率は3割台   森友説明納得せず8割', 'toxic': 1}
+    Label Distribution for column 'toxic':
+      1: 2500
+      0: 2500
+
+Total records across all configurations/splits: 71374

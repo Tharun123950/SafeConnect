@@ -1,0 +1,274 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String?  @unique
+  mobile    String?
+  password  String
+  name      String
+  bio       String?
+  avatar    String?
+  gender    String?
+  registrationPhoto String?
+  faceEmbedding String?
+  warningCount  Int      @default(0)
+  createdAt DateTime @default(now())
+
+  posts        Post[]
+  comments     Comment[]
+  likes        Like[]
+  
+  // Relations to follows
+  followedBy   Follow[] @relation("following")
+  following    Follow[] @relation("follower")
+
+  // Relations to messages
+  messagesSent     Message[] @relation("messagesSent")
+  messagesReceived Message[] @relation("messagesReceived")
+
+  // Chats participation
+  chatsAsUser1 Chat[] @relation("chatUser1")
+  chatsAsUser2 Chat[] @relation("chatUser2")
+
+  // Notifications
+  notificationsReceived Notification[] @relation("notificationsReceived")
+  notificationsSent     Notification[] @relation("notificationsSent")
+
+  // Abuse Reports
+  reportsCreated  Report[] @relation("reportsCreated")
+  reportsReceived Report[] @relation("reportsReceived")
+
+  // Flagged messages
+  flaggedMessagesSent     FlaggedMessage[] @relation("flaggedMessagesSent")
+  flaggedMessagesReceived FlaggedMessage[] @relation("flaggedMessagesReceived")
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  type      String   // 'image', 'caesar', 'code', 'text', 'gradient'
+  img       String?
+  content   String?
+  title     String?
+  caption   String?
+  createdAt DateTime @default(now())
+
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  likes         Like[]
+  comments      Comment[]
+  notifications Notification[]
+  reports       Report[]
+
+  @@index([userId])
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  postId    Int
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, postId])
+  @@index([postId])
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  postId    Int
+  text      String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([postId])
+}
+
+model Follow {
+  id          Int      @id @default(autoincrement())
+  followerId  Int
+  followingId Int
+  createdAt   DateTime @default(now())
+
+  follower  User @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+  following User @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followingId])
+  @@index([followerId])
+  @@index([followingId])
+}
+
+model Chat {
+  id        Int      @id @default(autoincrement())
+  user1Id   Int
+  user2Id   Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user1 User @relation("chatUser1", fields: [user1Id], references: [id], onDelete: Cascade)
+  user2 User @relation("chatUser2", fields: [user2Id], references: [id], onDelete: Cascade)
+
+  messages Message[]
+
+  @@unique([user1Id, user2Id])
+}
+
+model Message {
+  id               Int      @id @default(autoincrement())
+  chatId           Int?
+  senderId         Int
+  receiverId       Int
+  text             String?
+  image            String?
+  status           String   @default("sent") // 'sent', 'delivered', 'read'
+  createdAt        DateTime @default(now())
+  isFlagged        Boolean  @default(false)
+  aiLabel          String?
+  aiConfidence     Float?
+  aiSeverity       String?
+  receiverDecision String?
+  senderDecision   String?
+
+  chat            Chat?            @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  sender          User             @relation("messagesSent", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver        User             @relation("messagesReceived", fields: [receiverId], references: [id], onDelete: Cascade)
+  flaggedMessages FlaggedMessage[]
+  notifications   Notification[]   @relation("notificationMessages")
+  reports         Report[]         @relation("reportedMessages")
+
+  @@index([senderId, receiverId])
+  @@index([chatId])
+}
+
+model Notification {
+  id            Int      @id @default(autoincrement())
+  userId        Int      // recipient
+  senderId      Int      // instigator
+  type          String   // 'like', 'comment', 'follow', 'message'
+  postId        Int?
+  messageId     Int?
+  complaintId   Int?
+  warningNumber Int?
+  text          String?
+  title         String?
+  message       String?
+  readStatus    Int      @default(0)
+  isRead        Int      @default(0) // 0 = unread, 1 = read
+  createdAt     DateTime @default(now())
+  timestamp     DateTime @default(now())
+
+  user   User     @relation("notificationsReceived", fields: [userId], references: [id], onDelete: Cascade)
+  sender User     @relation("notificationsSent", fields: [senderId], references: [id], onDelete: Cascade)
+  post   Post?    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  msg    Message? @relation("notificationMessages", fields: [messageId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Report {
+  id               Int      @id @default(autoincrement())
+  reporterId       Int
+  reportedUserId   Int?
+  reportedUserUsername String?
+  reportedUserPhoto    String?
+  postId           Int?
+  flaggedMessageId Int?
+  messageId        Int?
+  warningCount     Int      @default(0)
+  warningLimit     Int      @default(3)
+  warningStatus    String   @default("ACTIVE")
+  warningIssued    Boolean  @default(false)
+  warningIssuedAt  DateTime?
+  warningNumber    Int?
+  reason           String
+  status           String   @default("Pending")
+  actionTaken      Boolean  @default(false)
+  actionTakenTimestamp DateTime?
+  createdAt        DateTime @default(now())
+
+  reporter       User            @relation("reportsCreated", fields: [reporterId], references: [id], onDelete: Cascade)
+  reportedUser   User?           @relation("reportsReceived", fields: [reportedUserId], references: [id], onDelete: SetNull)
+  post           Post?           @relation(fields: [postId], references: [id], onDelete: SetNull)
+  flaggedMessage FlaggedMessage? @relation("flaggedMessageReports", fields: [flaggedMessageId], references: [id], onDelete: SetNull)
+  message        Message?        @relation("reportedMessages", fields: [messageId], references: [id], onDelete: SetNull)
+}
+
+model DeletedAccount {
+  id                         Int      @id @default(autoincrement())
+  previousEmail              String?
+  accountName                String
+  registrationPhotoReference String?
+  faceEmbedding              String?
+  deletedAt                  DateTime @default(now())
+  complaintId                Int?
+}
+
+model FlaggedMessage {
+  id                Int       @id @default(autoincrement())
+  senderId          Int
+  receiverId        Int
+  messageId         Int?
+  message           String
+  aiLabel           String
+  confidence        Float
+  severity          String
+  timestamp         DateTime  @default(now())
+  senderDecision    String
+  receiverDecision  String?   @default("PENDING")
+  decisionTimestamp DateTime?
+  status            String?   @default("Pending")
+
+  sender   User     @relation("flaggedMessagesSent", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver User     @relation("flaggedMessagesReceived", fields: [receiverId], references: [id], onDelete: Cascade)
+  msg      Message? @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  reports  Report[] @relation("flaggedMessageReports")
+}
+
+model OTPVerification {
+  id         Int      @id @default(autoincrement())
+  identifier String
+  type       String   // 'email' or 'mobile'
+  otpHash    String
+  attempts   Int      @default(0)
+  verified   Boolean  @default(false)
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier, type])
+}
+
+model AbusiveFeedback {
+  id                     Int      @id @default(autoincrement())
+  completeMessage        String
+  abusiveWordOrPhrase    String
+  normalizedWordOrPhrase String
+  originalSenderId       Int?
+  originalReceiverId     Int?
+  originalSenderUsername String?
+  originalReceiverUsername String?
+  submittedById          Int?
+  submittedByUsername    String?
+  originalMessageId      Int?
+  source                 String   @default("user_feedback")
+  status                 String   @default("PENDING")
+  language               String?
+  createdAt              DateTime @default(now())
+
+  @@index([normalizedWordOrPhrase])
+  @@index([originalSenderId, originalReceiverId])
+}
+
+

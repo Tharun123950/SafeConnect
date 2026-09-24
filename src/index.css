@@ -1,0 +1,1621 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --ig-bg: #0d071f;
+  --ig-nav-bg: #110927;
+  --ig-post-bg: #150c31;
+  --ig-border: rgba(168, 85, 247, 0.22);
+  --ig-border-strong: rgba(168, 85, 247, 0.45);
+  --ig-text-primary: #f8fafc;
+  --ig-text-secondary: #a78bfa;
+  --ig-text-muted: #7c6f96;
+  --ig-link: #c084fc;
+  --ig-hover-bg: rgba(168, 85, 247, 0.16);
+  --ig-violet-glow: 0 0 24px rgba(168, 85, 247, 0.25);
+  --ig-card-glow: 0 8px 32px rgba(10, 4, 25, 0.7), 0 0 20px rgba(139, 92, 246, 0.12);
+  --ig-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  font-family: var(--ig-font);
+  background-color: var(--ig-bg);
+  color: var(--ig-text-primary);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0b0518;
+  background-image:
+    radial-gradient(ellipse 90% 65% at 50% -12%, #32125e 0%, #1a0933 42%, #0e0620 78%, #070310 100%),
+    radial-gradient(circle at 10% 45%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 75%, rgba(168, 85, 247, 0.07) 0%, transparent 45%);
+  background-attachment: fixed;
+  color: var(--ig-text-primary);
+  overflow-y: scroll;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0d071f;
+}
+::-webkit-scrollbar-thumb {
+  background: #361b5c;
+  border-radius: 4px;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #502787;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
+}
+
+/* App Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+  width: 244px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-right: 1px solid var(--ig-border);
+  background: var(--ig-nav-bg);
+  box-shadow: 2px 0 24px rgba(14, 6, 32, 0.7), inset -1px 0 0 rgba(168, 85, 247, 0.14);
+  padding: 8px 12px 20px 12px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: width 0.2s ease;
+}
+
+.logo-container {
+  height: 92px;
+  display: flex;
+  align-items: center;
+  padding: 25px 12px 0 12px;
+  margin-bottom: 16px;
+}
+
+.logo-text {
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  text-transform: none;
+}
+
+.sidebar-back-btn {
+  background: none;
+  border: none;
+  color: var(--ig-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background 0.1s ease;
+  margin-right: 4px;
+}
+
+.sidebar-back-btn:hover {
+  background: var(--ig-hover-bg);
+}
+
+.logo-instagram {
+  display: block;
+}
+
+.logo-instagram-icon {
+  display: none;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--ig-text-primary);
+  font-weight: 400;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.nav-item:hover {
+  background: var(--ig-hover-bg);
+}
+
+.nav-item:active {
+  transform: scale(0.98);
+}
+
+.nav-item.active {
+  font-weight: 700;
+}
+
+.nav-label {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+}
+
+/* Main Panel Content Area */
+.main-content {
+  flex: 1;
+  margin-left: 244px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  transition: margin-left 0.2s ease;
+}
+
+.content-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 820px;
+  padding: 28px 20px 0 20px;
+  gap: 64px;
+  justify-content: center;
+}
+
+/* Home view layout */
+.feed-container {
+  width: 470px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 60px;
+}
+
+/* Stories Panel */
+.stories-bar {
+  display: flex;
+  gap: 16px;
+  padding: 16px 8px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--ig-border);
+  scrollbar-width: none; /* Firefox */
+}
+
+.stories-bar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.story-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  min-width: 66px;
+}
+
+.story-avatar-container {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-avatar-container.viewed {
+  background: var(--ig-border);
+}
+
+.story-avatar-container img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--ig-bg);
+}
+
+.story-username {
+  font-size: 12px;
+  color: var(--ig-text-primary);
+  max-width: 74px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Instagram Post */
+.post-card {
+  border-bottom: 1px solid var(--ig-border);
+  padding-bottom: 16px;
+  margin-bottom: 12px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 4px;
+}
+
+.post-author-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.post-author-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.post-author-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ig-text-primary);
+  cursor: pointer;
+}
+
+.post-time {
+  font-size: 14px;
+  color: var(--ig-text-secondary);
+}
+
+.post-dots {
+  background: none;
+  border: none;
+  color: var(--ig-text-primary);
+  cursor: pointer;
+}
+
+.post-image-container {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--ig-border);
+  background: #121212;
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.post-actions-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 4px 8px 4px;
+}
+
+.post-actions-left {
+  display: flex;
+  gap: 16px;
+}
+
+.post-action-btn {
+  background: none;
+  border: none;
+  color: var(--ig-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease;
+}
+
+.post-action-btn:hover {
+  color: var(--ig-text-secondary);
+}
+
+.post-action-btn:active {
+  transform: scale(1.15);
+}
+
+.post-action-btn.liked {
+  color: #ff3040;
+}
+
+.post-action-btn.liked svg {
+  fill: #ff3040;
+}
+
+.post-likes-count {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 4px;
+  margin-bottom: 8px;
+}
+
+.post-caption {
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 0 4px;
+  margin-bottom: 8px;
+}
+
+.post-caption-author {
+  font-weight: 600;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.post-comments-summary {
+  font-size: 14px;
+  color: var(--ig-text-secondary);
+  padding: 0 4px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.post-comment-item {
+  font-size: 14px;
+  padding: 2px 4px;
+}
+
+.post-comment-author {
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.post-comment-input-bar {
+  display: flex;
+  align-items: center;
+  border-top: none;
+  padding: 8px 4px 0 4px;
+  margin-top: 12px;
+}
+
+.post-comment-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--ig-text-primary);
+  font-size: 14px;
+  outline: none;
+}
+
+.post-comment-input::placeholder {
+  color: var(--ig-text-muted);
+}
+
+.post-comment-submit-btn {
+  background: none;
+  border: none;
+  color: var(--ig-link);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.post-comment-submit-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* Suggestion Sidebar Widget */
+.sidebar-suggestions {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+  gap: 16px;
+}
+
+.user-profile-header-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-profile-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-profile-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-profile-name-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile-username {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.user-profile-fullname {
+  font-size: 14px;
+  color: var(--ig-text-secondary);
+}
+
+.switch-btn {
+  background: none;
+  border: none;
+  color: var(--ig-link);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.suggestions-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.suggestions-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ig-text-secondary);
+}
+
+.see-all-btn {
+  background: none;
+  border: none;
+  color: var(--ig-text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.suggestion-item-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.suggestion-item-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.suggestion-item-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.suggestion-item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion-item-username {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.suggestion-item-reason {
+  font-size: 12px;
+  color: var(--ig-text-secondary);
+}
+
+.follow-btn {
+  background: none;
+  border: none;
+  color: var(--ig-link);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.footer-copyright {
+  font-size: 12px;
+  color: var(--ig-text-muted);
+  line-height: 1.6;
+  margin-top: 24px;
+}
+
+/* Explore View Grid */
+.explore-container {
+  width: 100%;
+  max-width: 935px;
+  padding-bottom: 60px;
+}
+
+.explore-search-bar {
+  display: flex;
+  background: #1c1c1e;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-bottom: 24px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.explore-search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--ig-text-primary);
+  font-size: 14px;
+  outline: none;
+  margin-left: 8px;
+}
+
+.explore-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.explore-grid-item {
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+  background: #121212;
+  cursor: pointer;
+}
+
+.explore-grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.explore-item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.explore-grid-item:hover .explore-item-overlay {
+  opacity: 1;
+}
+
+.overlay-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* Profile Tab Layout */
+.profile-container {
+  width: 100%;
+  max-width: 935px;
+  padding-bottom: 60px;
+}
+
+.profile-header-section {
+  display: flex;
+  padding: 32px 0 44px 0;
+  border-bottom: 1px solid var(--ig-border);
+  gap: 80px;
+}
+
+.profile-avatar-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-avatar-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-details-wrapper {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-row-1 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-title-username {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.profile-edit-btn {
+  background: #363636;
+  border: none;
+  color: var(--ig-text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.profile-edit-btn:hover {
+  background: #454545;
+}
+
+.profile-row-2 {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.profile-stat-number {
+  font-weight: 600;
+}
+
+.profile-row-3 {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.profile-fullname {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.profile-tabs-header {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  border-top: none;
+  margin-top: 0;
+}
+
+.profile-tab-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--ig-text-secondary);
+  cursor: pointer;
+  text-transform: uppercase;
+  border-top: 1px solid transparent;
+  margin-top: -1px;
+}
+
+.profile-tab-item.active {
+  color: var(--ig-text-primary);
+  border-top: 1px solid var(--ig-text-primary);
+}
+
+.profile-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 16px;
+}
+
+.profile-post-item {
+  aspect-ratio: 1/1;
+  position: relative;
+  overflow: hidden;
+  background: #121212;
+  cursor: pointer;
+}
+
+.profile-post-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-post-item:hover .explore-item-overlay {
+  opacity: 1;
+}
+
+/* Dynamic Editing Fields */
+.profile-edit-form {
+  background: #1c1c1e;
+  border: 1px solid var(--ig-border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 500px;
+}
+
+.edit-input-field {
+  background: #000000;
+  border: 1px solid var(--ig-border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: white;
+  outline: none;
+  font-size: 14px;
+}
+
+.edit-input-field:focus {
+  border-color: var(--ig-text-secondary);
+}
+
+/* Chat view */
+.inbox-container {
+  width: 100%;
+  max-width: 935px;
+  height: calc(100vh - 40px);
+  border: 1px solid var(--ig-border);
+  border-radius: 4px;
+  display: flex;
+  background: var(--ig-bg);
+}
+
+.inbox-list {
+  width: 350px;
+  border-right: 1px solid var(--ig-border);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.inbox-list-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  border-bottom: 1px solid var(--ig-border);
+}
+
+.inbox-users-scroller {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.inbox-user-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 20px;
+  cursor: pointer;
+  height: 72px;
+}
+
+.inbox-user-card:hover {
+  background: var(--ig-hover-bg);
+}
+
+.inbox-user-card.active {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.inbox-user-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.inbox-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inbox-user-username {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.inbox-user-preview-text {
+  font-size: 12px;
+  color: var(--ig-text-secondary);
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chat-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chat-pane-header {
+  height: 60px;
+  border-bottom: 1px solid var(--ig-border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 12px;
+}
+
+.chat-header-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chat-header-username {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.chat-messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 70%;
+}
+
+.message-wrapper.sent {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.message-wrapper.received {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.ig-message-bubble {
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  width: fit-content;
+}
+
+.ig-message-bubble.received {
+  background: #262626;
+  color: var(--ig-text-primary);
+}
+
+.ig-message-bubble.sent {
+  background: #3797f0;
+  color: white;
+}
+
+.unsend-btn {
+  background: none;
+  border: none;
+  color: var(--ig-text-muted);
+  font-size: 11px;
+  cursor: pointer;
+  margin-top: 2px;
+  margin-right: 4px;
+  margin-left: 4px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.message-wrapper:hover .unsend-btn {
+  opacity: 1;
+}
+
+.unsend-btn:hover {
+  color: #ff3040;
+}
+
+.chat-input-row {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+}
+
+.chat-input-container {
+  flex: 1;
+  border: 1px solid var(--ig-border);
+  border-radius: 22px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-input-field {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--ig-text-primary);
+  font-size: 14px;
+  outline: none;
+}
+
+.chat-input-field::placeholder {
+  color: var(--ig-text-muted);
+}
+
+.chat-send-btn {
+  background: none;
+  border: none;
+  color: var(--ig-link);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.chat-send-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* Mobile Header */
+.mobile-header {
+  display: none;
+  height: 48px;
+  border-bottom: 1px solid var(--ig-border);
+  background: var(--ig-bg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.mobile-header-logo {
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  text-transform: none;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--ig-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive Rules */
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 220px;
+    padding: 8px 12px;
+  }
+  .logo-container {
+    padding: 25px 12px 0 12px;
+  }
+  .main-content {
+    margin-left: 220px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .sidebar-suggestions {
+    display: none;
+  }
+  .content-wrapper {
+    max-width: 600px;
+    gap: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column-reverse;
+  }
+  .mobile-header {
+    display: flex;
+  }
+  .sidebar {
+    width: 100%;
+    height: 48px;
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    border-right: none;
+    border-top: 1px solid var(--ig-border);
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
+    z-index: 1000;
+  }
+  .logo-container {
+    display: none;
+  }
+  .nav-menu {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .nav-item {
+    padding: 12px;
+  }
+  .main-content {
+    margin-left: 0;
+    padding-top: 48px;
+    padding-bottom: 60px;
+  }
+  .content-wrapper {
+    padding: 12px 10px 0 10px;
+  }
+  .feed-container {
+    width: 100%;
+  }
+  .profile-header-section {
+    gap: 20px;
+    padding: 16px 12px;
+  }
+  .profile-avatar-img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Modal Overlay & Dialog Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: #121212;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  width: 450px;
+  max-width: 90%;
+  padding: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: white;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #262626;
+  padding-bottom: 12px;
+}
+
+.modal-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  color: #a8a8a8;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.modal-close-btn:hover {
+  color: white;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-input {
+  background: #000000;
+  border: 1px solid #262626;
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+}
+
+.modal-select {
+  background: #000000;
+  border: 1px solid #262626;
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ==========================================================
+   Admin Warning Notification — Interactive Smooth Zoom & Glow
+   ========================================================== */
+.admin-warning-notification-card {
+  padding: 11px 14px;
+  border-radius: 9px;
+  background-color: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+  margin-bottom: 6px;
+  cursor: pointer;
+  position: relative;
+  transform: translateZ(0);
+  transform-origin: center left;
+  transition: transform 0.26s cubic-bezier(0.2, 0.8, 0.25, 1),
+              box-shadow 0.26s cubic-bezier(0.2, 0.8, 0.25, 1),
+              background-color 0.26s ease,
+              border-color 0.26s ease,
+              filter 0.26s ease;
+  will-change: transform, box-shadow;
+}
+
+.admin-warning-notification-card:hover {
+  transform: scale(1.03);
+  background-color: rgba(245, 158, 11, 0.18);
+  border-color: rgba(245, 158, 11, 0.65);
+  filter: brightness(1.08);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.24), 0 0 14px rgba(245, 158, 11, 0.16);
+  z-index: 5;
+}
+
+/* ==========================================================
+   Admin Delete Account Button — High Visibility & Hover Glow
+   ========================================================== */
+.admin-delete-account-btn {
+  background: #ff4757;
+  border: 1px solid rgba(255, 71, 87, 0.45);
+  border-radius: 5px;
+  padding: 6px 13px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  box-shadow: 0 2px 8px rgba(255, 71, 87, 0.25);
+  transform: translateZ(0);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.25, 1),
+              background-color 0.2s ease,
+              box-shadow 0.2s ease,
+              filter 0.2s ease;
+  will-change: transform, box-shadow;
+}
+
+.admin-delete-account-btn:hover {
+  background: #ff5e6c;
+  filter: brightness(1.12);
+  transform: scale(1.04);
+  box-shadow: 0 4px 16px rgba(255, 71, 87, 0.45);
+}
+
+.admin-delete-account-btn:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================
+   Admin Header Back Button
+   ========================================================== */
+.admin-header-back-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.admin-header-back-btn:hover {
+  background: rgba(139, 92, 246, 0.25) !important;
+  border-color: rgba(139, 92, 246, 0.5) !important;
+  transform: translateX(-2px);
+}
+
+.admin-header-back-btn:active {
+  transform: scale(0.96);
+}
+
+/* ==========================================================
+   Flagged/Abusive Message Warning Banner Hover Interaction
+   (Chat messages & Notification cards)
+   ========================================================== */
+.abuse-receiver-banner,
+.abuse-notification-warning {
+  cursor: default;
+  transform: translateZ(0);
+  transform-origin: center;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.25, 1),
+              box-shadow 0.22s cubic-bezier(0.2, 0.8, 0.25, 1),
+              border-color 0.22s ease,
+              background-color 0.22s ease;
+  will-change: transform, box-shadow;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .abuse-receiver-banner:hover,
+  .abuse-notification-warning:hover {
+    transform: scale(0.98);
+    background-color: rgba(239, 68, 68, 0.14) !important;
+    border-color: rgba(239, 68, 68, 0.45) !important;
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.3), 0 2px 8px rgba(239, 68, 68, 0.18);
+  }
+}
+
+/* ==========================================================
+   SafeConnect Auth Pages (Login & Signup ONLY) Background
+   ========================================================== */
+.login-page-container {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse 95% 75% at 50% -10%, #31115b 0%, #1a0833 45%, #0d061c 80%, #06020f 100%);
+  color: #ffffff;
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+
+/* SafeConnect background visual strictly behind form cards */
+.safeconnect-auth-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+.sc-bg-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  min-width: 1200px;
+  min-height: 800px;
+  object-fit: cover;
+  opacity: 0.88;
+}
+
+/* Ambient glowing orbs */
+.sc-bg-ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.sc-orb-top {
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(circle, #8b5cf6 0%, #6d28d9 60%, transparent 80%);
+  opacity: 0.35;
+}
+
+.sc-orb-bottom-left {
+  bottom: -150px;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #7c3aed 0%, #4c1d95 60%, transparent 80%);
+  opacity: 0.25;
+}
+
+.sc-orb-bottom-right {
+  bottom: -150px;
+  right: -100px;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, #6366f1 0%, #3b0764 60%, transparent 80%);
+  opacity: 0.22;
+}
+
+/* Pure CSS Keyframe Animations - Lightweight & Smooth */
+@keyframes scRotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scRotateReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes scPulseShield {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 16px rgba(168, 85, 247, 0.35));
+  }
+  50% {
+    transform: scale(1.025);
+    opacity: 1;
+    filter: drop-shadow(0 0 28px rgba(168, 85, 247, 0.65));
+  }
+}
+
+@keyframes scStreamFlow1 {
+  0% { stroke-dashoffset: 28; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes scStreamFlow2 {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 28; }
+}
+
+@keyframes scFloatParticle1 {
+  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.4; }
+  50% { transform: translateY(-12px) translateX(6px); opacity: 0.85; }
+}
+
+@keyframes scFloatParticle2 {
+  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.5; }
+  50% { transform: translateY(14px) translateX(-8px); opacity: 0.9; }
+}
+
+.sc-rotate-slow {
+  animation: scRotateSlow 45s linear infinite;
+}
+
+.sc-rotate-reverse {
+  animation: scRotateReverse 35s linear infinite;
+}
+
+.sc-pulse-shield {
+  animation: scPulseShield 6s ease-in-out infinite;
+}
+
+.sc-stream-1 {
+  animation: scStreamFlow1 3s linear infinite;
+}
+
+.sc-stream-2 {
+  animation: scStreamFlow2 3.5s linear infinite;
+}
+
+.sc-float-1 {
+  animation: scFloatParticle1 7s ease-in-out infinite;
+}
+
+.sc-float-2 {
+  animation: scFloatParticle2 8s ease-in-out infinite;
+}
+
+.sc-float-3 {
+  animation: scFloatParticle1 9s ease-in-out infinite reverse;
+}
+
+/* Ensure the Login/Signup/Admin card always sits prominently above the background */
+.login-page-container > div:not(.safeconnect-auth-bg):not(.safeconnect-admin-bg) {
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .safeconnect-auth-bg {
+    opacity: 0.45;
+  }
+  .sc-bg-svg {
+    min-width: 900px;
+    opacity: 0.65;
+  }
+}
+
+/* ==========================================================
+   SafeConnect Admin Security & Control Background (Admin Login ONLY)
+   ========================================================== */
+.safeconnect-admin-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+.sc-admin-bg-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  min-width: 1200px;
+  min-height: 800px;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+/* Ambient glow orbs specifically calibrated for Security Center */
+.sc-admin-ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+.sc-admin-orb-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.28) 0%, rgba(88, 28, 135, 0.12) 50%, transparent 75%);
+}
+
+.sc-admin-orb-left {
+  top: 15%;
+  left: -80px;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.22) 0%, rgba(76, 29, 149, 0.08) 60%, transparent 80%);
+}
+
+.sc-admin-orb-right {
+  top: 15%;
+  right: -80px;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(139, 92, 246, 0.1) 50%, transparent 80%);
+}
+
+/* Admin Keyframe Animations */
+@keyframes scAdminRadarSweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scAdminShieldPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 16px rgba(168, 85, 247, 0.35));
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 1;
+    filter: drop-shadow(0 0 26px rgba(56, 189, 248, 0.5));
+  }
+}
+
+@keyframes scAdminRotateTicks {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scAdminWaveFlow {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes scAdminStreamFlow {
+  0% { stroke-dashoffset: 24; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.sc-admin-radar-scan {
+  animation: scAdminRadarSweep 14s linear infinite;
+}
+
+.sc-admin-shield-pulse {
+  animation: scAdminShieldPulse 5s ease-in-out infinite;
+}
+
+.sc-admin-rotate-ticks {
+  animation: scAdminRotateTicks 60s linear infinite;
+}
+
+.sc-admin-wave {
+  animation: scAdminWaveFlow 3s ease-in-out infinite;
+}
+
+.sc-admin-stream {
+  animation: scAdminStreamFlow 3.5s linear infinite;
+}
+
+/* Mobile Responsiveness for Admin Security BG */
+@media (max-width: 768px) {
+  .safeconnect-admin-bg {
+    opacity: 0.45;
+  }
+  .sc-admin-bg-svg {
+    min-width: 900px;
+    opacity: 0.65;
+  }
+}
+
